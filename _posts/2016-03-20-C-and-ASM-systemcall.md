@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-date:   2016年 03月 20日 星期日 14:11:18 CST
+date:   2016-03-20 15:24:41 +0800
 categories: mooc c asm
 ---
 ## 使用glibc库函数和c语言内联汇编完成同一功能
