@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "使用glibc库函数和c语言内联汇编完成同一功能"
 date:   2016-03-20 15:24:41 +0800
 categories: mooc c asm
 ---
@@ -31,7 +31,9 @@ int main(int argc ,char *argv[]){
 }
 
 ```
+
 编译并运行
+
 ```
 $ gcc -m32 WriteFile.c -o WriteFile.elf
 $ ./WriteFile.elf 
@@ -42,6 +44,7 @@ This C Data
 ###然后编写内联汇编系统调用版程序
 
 > 为了方便省略了所有错误处理
+
 
 ```
 #include <stdio.h>
@@ -78,7 +81,9 @@ int main(int argc ,char *argv[]){
 	return 0;
 }
 ```
+
 编译运行
+
 ```
 $ gcc -m32 WriteFileAsm.c -o WriteFileAsm.elf
 $ ./WriteFileAsm.elf 
