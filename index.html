@@ -1,18 +1,19 @@
 ---
-layout: index
-title: 石漾男的个人网站
+layout: default
 ---
-<div class="jumbotron">
-	<div class="container">
-		<h1>{{ page.title }}</h1>
-		<a href="/blog" class="btn btn-primary btn-lg" role="button">进入博客</a>
-	</div>
-</div>
-<div class="container">
-        <div class="list-group">
-		<a class="list-group-item active">新博客</a>
-		{% for post in site.posts %}
-		<a href="{{ post.url }}" class="list-group-item list-group-item-sm">{{ post.title }}<span class="right">{{ post.date | date_to_string }}</span></a>
-		{% endfor %}
-        </div>
+
+<div class="home">
+
+  <h1 class="page-heading">博客</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
