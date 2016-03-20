@@ -1,0 +1,46 @@
+body{
+
+}
+
+.navbar{
+	border-radius:0px;
+	margin-bottom:0px;
+}
+
+#bgimg{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: auto;
+	z-index: -100;
+}
+
+.jumbotron{
+	background: url(../img/blue-pattern.jpg) no-repeat right 0px center;
+	background-size: cover;
+	color: white;
+}
+
+#Carousel{
+	background-color: #999;
+	height: 259px;
+	overflow: hidden;
+}
+
+
+.row > div{
+	margin-bottom: 20px;
+}
+
+.list-group-item > .right{
+	float:right;
+}
+
+.list-group-item-sm{
+	padding: 5px 10px;
+}
+
+#cke_main-editor{
+	height: 259px;
+}
