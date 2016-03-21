@@ -8,7 +8,7 @@
 # Site settings
 title:  石漾男的个人网站
 email: 15687127573@163.com
-description: >
+description:
 baseurl: ""
 url: "http://synfirecloud.github.io/" # the base hostname & protocol for your site
 github_username:  synFireCloud
