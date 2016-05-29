@@ -16,31 +16,42 @@ categories: openwrt compile
 ### 2.下载OpenWrt
 
 在设备支持页面还可以找到支持这个设备的OpenWrt版本，我这个是14.07版支持，于是
+
 下载14.07版OpenWrt
+
 ```
 git clone git://git.openwrt.org/14.07/openwrt.git
 ```
+
 下载15.05版即为：
+
 ```
 git clone git://git.openwrt.org/15.05/openwrt.git
 ```
+
 下载最新版为(开发版，不推荐使用)：
+
 ```
 git clone git://git.openwrt.org/openwrt.git
 ```
+
 ### 3.配置OpenWrt
 
 下载好了之后进入openwrt文件夹，然后运行下面的代码
+
 ```
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ```
+
 否则Openwrt只有基本功能，没有WebGUI（Luci）,邮箱，多媒体等
 然后复制第一布下载的config文件为当前目录下.config文件
 之后运行
+
 ```
 make menuconfig
 ```
+
 会提示一些软件包未安装，安装即可，成功后就会有图形界面的配置选择程序，一般默认配置不用改，根据需要增加Luci，OpenWrt SDK等，最后保存退出。
 
 ### 4.编译OpenWrt
