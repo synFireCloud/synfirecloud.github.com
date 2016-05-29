@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "使用glibc库函数和c语言内联汇编完成同一功能"
-date:   2016-03-20 15:24:41 +0800
+date:   2016-03-20 15:24:00 +0800
 categories: mooc c asm
 ---
 ## 使用glibc库函数和c语言内联汇编完成同一功能
