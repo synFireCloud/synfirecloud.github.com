@@ -4,7 +4,7 @@ title:  "Zeppelin的CAS集成"
 date:   2016-08-12 23:05:20 +0800
 categories: zeppelin shiro cas
 ---
-#Zeppelin的CAS集成
+Zeppelin项目管理的非常好基本一次编译通过没有任何问题。有插件检查编程风格，比如每行不超过100字符，加号两边加空格，缩进用2个空格等否则都会编译不通过，改源码的时候注意。
 
 ## 1 下载编译
 
