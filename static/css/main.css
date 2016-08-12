@@ -32,7 +32,7 @@ ul, ol, dl, figure,
 }
 
 p {
-  white-space:pre-wrap;
+  text-indent: 2em;
 }
 
 /**
