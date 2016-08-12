@@ -6,11 +6,11 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title:  石漾男的个人网站
+title: Just for Fun
 email: 15687127573@163.com
-description:
+description: 
 baseurl: ""
-url: "http://synfirecloud.github.io/" # the base hostname & protocol for your site
+url: "http://synfirecloud.github.io/"
 github_username:  synFireCloud
 
 # Build settings

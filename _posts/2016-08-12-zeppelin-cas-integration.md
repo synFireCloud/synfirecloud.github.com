@@ -1,6 +1,14 @@
-# 1 下载编译
+---
+layout: post
+title:  "Zeppelin的CAS集成"
+date:   2016-08-12 23:05:20 +0800
+categories: zeppelin shiro cas
+---
+#Zeppelin的CAS集成
 
-## 1.1 下载源码：
+## 1 下载编译
+
+### 1.1 下载源码：
 
 `git clone https://github.com/apache/zeppelin.git`
 
@@ -8,11 +16,11 @@
 
 `git checkout v0.6.0`
 
-## 1.2 编译源码
+### 1.2 编译源码
 
 `mvn clean install -Dmaven.test.skip=true`
 
-## 1.3 运行zepplin
+### 1.3 运行zepplin
 
 `bin/zeppelin-daemon.sh start`
 
@@ -20,9 +28,9 @@
 
 
 
-# 2 后端集成
+## 2 后端集成
 
-## 2.1 添加shiro-cas依赖
+### 2.1 添加shiro-cas依赖
 
 在zeppelin和zeppelin-server的pom.xml文件增加如下依赖
 
@@ -34,7 +42,7 @@
 </dependency>
 ```
 
-## 2.2 修改shiro配置文件
+### 2.2 修改shiro配置文件
 
 修改conf/shiro.ini为
 
@@ -88,7 +96,7 @@ shiro.loginUrl = https://login.hand-china.com/sso/login?service=http://localhost
 不要删除开头的Apache License声明，配置有插件检查协议。
 
 
-## 2.3 增加登陆入口
+### 2.3 增加登陆入口
 
 增加与前端集成的登陆入口
 zeppelin-server/src/main/java/org/apache/zeppelin/rest/CasLogin.java
@@ -153,15 +161,15 @@ CasLogin casLogin = new CasLogin();
 singletons.add(casLogin);
 ```
 
-## 2.4 附注
+### 2.4 附注
 
 1.编译出现unkown license错误是检测到有文件没有指明license，为那个文件的开头添加Apache License声明。
 
 
 
-# 3 前端集成
+## 3 前端集成
 
-## 3.1 登入实现
+### 3.1 登入实现
 
 修改 zeppelin-web\/src\/app\/app.js
 
@@ -175,7 +183,7 @@ auth函数内将
 
 即获取授权数据失败（被shiro拦截）则跳转到登陆入口，shiro会负责授权最后由登陆入口返回。
 
-## 3.2 登出实现
+### 3.2 登出实现
 
 修改zeppelin-web\/src\/components\/navbar\/navbar.controller.js
 $scope.logout 函数内
@@ -198,7 +206,7 @@ setTimeout(function() {
 
 在应用内登出成功后在cas服务器也登出。
 
-## 3.3 附注
+### 3.3 附注
 
 1.如果编译时出现karma:unit错误，原因是登入链接为后端提供服务，测试时之启动前端。
 修改zeppelin-web\/Gruntfile.js

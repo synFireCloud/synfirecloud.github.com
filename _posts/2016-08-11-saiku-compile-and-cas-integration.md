@@ -1,20 +1,28 @@
-# 1 下载与编译
+---
+layout: post
+title:  "Saiku的编译与CAS集成"
+date:   2016-08-11 15:24:00 +0800
+categories: saiku compile cas
+---
+# Saiku的编译与CAS集成
 
-## 1.1 源码下载
+## 1 下载与编译
 
-### 1.1.1 saiku 源码下载
+### 1.1 源码下载
+
+#### 1.1.1 saiku 源码下载
 
 `git clone https://github.com/OSBI/saiku.git`
 
-### 1.1.2 saiku-query 源码下载
+#### 1.1.2 saiku-query 源码下载
 
 由于saiku依赖saiku-query，而目前saiku-query作为另一个独立项目并且没有加入maven仓库所以必须自行下载编译。
 
 `git clone https://github.com/OSBI/saiku-query.git`
 
-## 1.2 源码编译
+### 1.2 源码编译
 
-### 1.2.1 添加maven仓库
+#### 1.2.1 添加maven仓库
 
 由于项目maven仓库源配置不完整，需要在saiku和saiku-query的pom.xml添加如下仓库配置。
 
@@ -50,7 +58,7 @@
 
 并且将central仓库提到仓库列表开头，优先使用。
 
-### 1.2.2 修改pom.xml
+#### 1.2.2 修改pom.xml
 
 1.saiku原本使用的pentaho.libs版本为TRUNK-SNAPSHOT不但经常变动而且目前仓库里这个版本损坏。
 修改saiku
@@ -144,28 +152,28 @@
 </dependency>
 ```
 
-### 1.2.3 编译
+#### 1.2.3 编译
 
 先在saiku-query内运行`mvn clean install -Dmaven.test.skip=true`
 然后在saiku内运行`mvn clean install -Dmaven.test.skip=true`
 
-## 1.3 运行
+### 1.3 运行
 
 在saiku\/saiku-server\/target\/dist\/saiku-server内运行`./start-saiku.sh`
 打开[http:\/\/localhost:8080](http://localhost:8080)即可看到效果
 
-## 1.4 扩展
+### 1.4 扩展
 
 为了以后编译运行方便可将saiku-query作为saiku的子模块放到saiku文件夹然后设置为子模块。
 
 
 
 
-# 2 CAS后端实现
+## 2 CAS后端实现
 
 在saiku-webapp/src/main/webapp/WEB-INF/目录下作如下操作
 
-## 2.1 添加属性配置文件
+### 2.1 添加属性配置文件
 
 添加如下属性配置文件到
 applicationContext-spring-security-cas.properties
@@ -180,7 +188,7 @@ cas.defaultUrl=http://localhost:3000/#/app/index
 cas.auth.provider.key=hand_hap_cas_key_prod
 ```
 
-## 2.2 启用saiku CAS 配置
+### 2.2 启用saiku CAS 配置
 
 修改 applicationContext-spring-security.xml
 
@@ -194,11 +202,11 @@ cas.auth.provider.key=hand_hap_cas_key_prod
 <import resource="applicationContext-spring-security-cas.xml"/>
 ```
 
-## 2.3 修改saiku CAS配置
+### 2.3 修改saiku CAS配置
 
 修改applicationContext-spring-security-cas.xml文件
 
-### 2.3.1 引入属性配置文件
+#### 2.3.1 引入属性配置文件
 
 添加xmlns配置`xmlns:context="http://www.springframework.org/schema/context"`
 并且添加如下属性文件引入
@@ -229,7 +237,7 @@ cas.auth.provider.key=hand_hap_cas_key_prod
         order ="-1" />
 ```
 
-### 2.3.2 添加数据源和userDetailsService配置
+#### 2.3.2 添加数据源和userDetailsService配置
 
 添加如下数据源配置
 
@@ -271,7 +279,7 @@ cas.auth.provider.key=hand_hap_cas_key_prod
 </property>
 ```
 
-### 2.3.3 修改CAS相关Bean
+#### 2.3.3 修改CAS相关Bean
 
 1.修改serviceProperties属性service为${cas.service}
 2.修改casEntryPoint属性loginUrl为${cas.ssoserver.loginurl}
@@ -279,7 +287,7 @@ cas.auth.provider.key=hand_hap_cas_key_prod
 4.修改ticketValidator构造参数为${cas.ssoserver.url}
 5.修改casAuthenticationProvider属性key为${cas.auth.provider.key}
 
-### 2.3.4 修改Spring Secure配置
+#### 2.3.4 修改Spring Secure配置
 
 修改applicationContext-saiku.xml文件
 
@@ -319,14 +327,14 @@ cas.auth.provider.key=hand_hap_cas_key_prod
 
 添加了标签属性`entry-point-ref="casEntryPoint"`和添加`security:custom-filter`
 
-### 2.3.5 修改初始数据库配置
+#### 2.3.5 修改初始数据库配置
 
 修改saiku-core/saiku-service/src/main/java/org/saiku/database/Database.java文件
 
 有两段拼接的SQL，一段是添加用户，另一段是添加用户对应权限。
 需要添加CAS返回的用户ID为用户表和权限表的username,Hand CAS返回为工号。
 
-## 2.4 修改saiku源码
+### 2.4 修改saiku源码
 
 由于saiku默认使用用户名和密码授权，需要修改源码来配置CAS
 
@@ -437,7 +445,7 @@ public class CasLoginController {
 
 
 
-# 3 CAS前端实现
+## 3 CAS前端实现
 
 前端修改比较简单只需要修改saiku-ui/js/saiku/models/Session.js文件
 替换

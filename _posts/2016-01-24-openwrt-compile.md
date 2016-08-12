@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "OpenWrt编译记录"
-date:   2016-01-24 17:02:00 +0800
+date:   2016-01-24  23:05:20 +0800
 categories: openwrt compile
 ---
 # OpenWrt编译记录
