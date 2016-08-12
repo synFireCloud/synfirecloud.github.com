@@ -4,7 +4,7 @@ title:  "Saiku的编译与CAS集成"
 date:   2016-08-11 15:24:00 +0800
 categories: saiku compile cas
 ---
-# Saiku的编译与CAS集成
+回首Saiku的编译真是比较艰难，很多软件包缺失，改名或者格式不对，修改了2天才终于编译成功，希望可以帮到大家。
 
 ## 1 下载与编译
 
